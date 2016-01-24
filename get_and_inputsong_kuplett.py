@@ -47,6 +47,8 @@ def kupletter_to_inputsong(username,password,outdirname):
     #Note that keys are cast to lowercase, and hence no upper case version is needed
     inputsong_parser.style_dictionary["alla"]="Alla"
     inputsong_parser.style_dictionary["gilgamesh"]="Gilgamesh"
+    inputsong_parser.style_dictionary["g"]="Gilgamesh"
+    inputsong_parser.style_dictionary["gil"]="Gilgamesh"
     inputsong_parser.style_dictionary["ishtar"]="Ishtar"
     inputsong_parser.style_dictionary["i"]="Ishtar"
     inputsong_parser.style_dictionary["ereshti-aya"]="Ereshti-Aya"
@@ -74,8 +76,16 @@ def kupletter_to_inputsong(username,password,outdirname):
     i=0
     for lyric in lyrics:    
         #open relevant file
-        outfilename=outfilenames[i]
-        outfile = codecs.open(outdirname+"/"+outfilename, 'w','utf-8')
+        outfilename=outdirname+"/"+outfilenames[i]
+        folder = outfilename;
+        if folder.find("/") >= 0:
+            folder = folder[:folder.rfind("/")]
+        if not os.path.exists(folder):
+            try:
+                os.makedirs(folder);
+            except OSError:
+                print("Skipping creation of %s because it exists already.", folder)
+        outfile = codecs.open(outfilename, 'w','utf-8')
     
         #First we go through the lyric to get metadata that's
         #potentially been sprinkled throughout the text (bad spexare!)
@@ -108,8 +118,8 @@ def kupletter_to_inputsong(username,password,outdirname):
 
 if __name__ == "__main__":
     if len(sys.argv)<4:
-        print "Need 3 arguments."
-        print "Usage:"
-        print "get_and_parse_kuplett.py USERNAME PASSWORD OUTDIR_NAME"
+        print("Need 3 arguments.")
+        print("Usage:")
+        print("get_and_parse_kuplett.py USERNAME PASSWORD OUTDIR_NAME")
         sys.exit(3)
     kupletter_to_inputsong(sys.argv[1],sys.argv[2],sys.argv[3])

@@ -42,7 +42,7 @@ def kupletter_to_ass(username,password,outfilename):
         outfile = codecs.open(outfilename, 'w','utf-8')
 
     else:
-        print "File '"+outfilename+"' already exists. Delete or rename it and try again."
+        print("File '"+outfilename+"' already exists. Delete or rename it and try again.")
         sys.exit(1)
     
     #write preamble to the ASS file
@@ -63,28 +63,28 @@ def kupletter_to_ass(username,password,outfilename):
 \nCollisions: Normal\
 \nPlayResY: 0\n\n"
 
-    styles=ur"[V4+ Styles]"\
-+"\n"+ur"Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding"\
-+"\n"+ur"Style: ALLA,Arial,32,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
-+"\n"+ur"Style: KOMMENTAR,Arial,32,&H00000000,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
-+"\n"+ur"Style: GILGASHTAR,Arial,32,&H000000FF,&H000000FF,&H000000FF,&H000000FF,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
-+"\n"+ur"Style: GILGASHTAR NERE,Arial,32,&H000000FF,&H000000FF,&H000000FF,&H000000FF,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
-+"\n"+ur"Style: ENHEDUANNA,Arial,32,&H00FF3399,&H00FF3399,&H00FF3399,&H00FF3399,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
-+"\n"+ur"Style: ENHEDUANNA NERE,Arial,32,&H00FF3399,&H00FF3399,&H00FF3399,&H00FF3399,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
-+"\n"+ur"Style: HAMMURABI,Arial,32,&H003399FF,&H003399FF,&H003399FF,&H003399FF,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
-+"\n"+ur"Style: HAMMURABI NERE,Arial,32,&H003399FF,&H003399FF,&H003399FF,&H003399FF,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
-+"\n"+ur"Style: OKÄND,Arial,32,&H0000FFFF,&H0000FFFF,&H0000FFFF,&H0000FFFF,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
-+"\n"+ur"Style: ERESHTI-AYA,Arial,32,&H0033CC33,&H0033CC33,&H0033CC33,&H0033CC33,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
-+"\n"+ur"Style: ERESHTI-AYA NERE,Arial,32,&H0033CC33,&H0033CC33,&H0033CC33,&H0033CC33,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
-+"\n"+ur"Style: GERTRUDE,Arial,32,&H00FF6600,&H00FF6600,&H00FF6600,&H00FF6600,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
-+"\n"+ur"Style: GERTRUDE NERE,Arial,32,&H00FF6600,&H00FF6600,&H00FF6600,&H00FF6600,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
-+"\n"+ur"Style: TAPPUTI,Arial,32,&H00FFFF00,&H00FFFF00,&H00FFFF00,&H00FFFF00,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
-+"\n"+ur"Style: TAPPUTI NERE,Arial,32,&H00FFFF00,&H00FFFF00,&H00FFFF00,&H00FFFF00,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
-+"\n"+ur"Style: NAMMU,Arial,32,&H00335C85,&H00335C85,&H00335C85,&H00335C85,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
-+"\n"+ur"Style: NAMMU NERE,Arial,32,&H00335C85,&H00335C85,&H00335C85,&H00335C85,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
-+"\n"+ur"Style: ALLA NERE,Arial,32,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,0,0,0,0,100,100,0,0,1,2,2,2,57,50,45,1"\
-+"\n"+ur"Style: ALLA MITTEN,Arial,32,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
-+"\n"+ur"Style: ALLA STORT,Arial,32,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
+    styles=r"[V4+ Styles]"\
++"\n"+r"Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding"\
++"\n"+r"Style: ALLA,Arial,32,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
++"\n"+r"Style: KOMMENTAR,Arial,32,&H00000000,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
++"\n"+r"Style: GILGASHTAR,Arial,32,&H000000FF,&H000000FF,&H000000FF,&H000000FF,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
++"\n"+r"Style: GILGASHTAR NERE,Arial,32,&H000000FF,&H000000FF,&H000000FF,&H000000FF,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
++"\n"+r"Style: ENHEDUANNA,Arial,32,&H00FF3399,&H00FF3399,&H00FF3399,&H00FF3399,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
++"\n"+r"Style: ENHEDUANNA NERE,Arial,32,&H00FF3399,&H00FF3399,&H00FF3399,&H00FF3399,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
++"\n"+r"Style: HAMMURABI,Arial,32,&H003399FF,&H003399FF,&H003399FF,&H003399FF,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
++"\n"+r"Style: HAMMURABI NERE,Arial,32,&H003399FF,&H003399FF,&H003399FF,&H003399FF,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
++"\n"+r"Style: OKÄND,Arial,32,&H0000FFFF,&H0000FFFF,&H0000FFFF,&H0000FFFF,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
++"\n"+r"Style: ERESHTI-AYA,Arial,32,&H0033CC33,&H0033CC33,&H0033CC33,&H0033CC33,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
++"\n"+r"Style: ERESHTI-AYA NERE,Arial,32,&H0033CC33,&H0033CC33,&H0033CC33,&H0033CC33,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
++"\n"+r"Style: GERTRUDE,Arial,32,&H00FF6600,&H00FF6600,&H00FF6600,&H00FF6600,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
++"\n"+r"Style: GERTRUDE NERE,Arial,32,&H00FF6600,&H00FF6600,&H00FF6600,&H00FF6600,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
++"\n"+r"Style: TAPPUTI,Arial,32,&H00FFFF00,&H00FFFF00,&H00FFFF00,&H00FFFF00,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
++"\n"+r"Style: TAPPUTI NERE,Arial,32,&H00FFFF00,&H00FFFF00,&H00FFFF00,&H00FFFF00,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
++"\n"+r"Style: NAMMU,Arial,32,&H00335C85,&H00335C85,&H00335C85,&H00335C85,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
++"\n"+r"Style: NAMMU NERE,Arial,32,&H00335C85,&H00335C85,&H00335C85,&H00335C85,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1"\
++"\n"+r"Style: ALLA NERE,Arial,32,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,0,0,0,0,100,100,0,0,1,2,2,2,57,50,45,1"\
++"\n"+r"Style: ALLA MITTEN,Arial,32,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
++"\n"+r"Style: ALLA STORT,Arial,32,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1"\
 +"\n\n"
 
     event_preamble="[Events]\
@@ -101,6 +101,8 @@ def kupletter_to_ass(username,password,outfilename):
     ass_parser.style_dictionary["kommentar"]="KOMMENTAR"
     ass_parser.style_dictionary["alla"]="ALLA"
     ass_parser.style_dictionary["gilgamesh"]="GILGASHTAR"
+    ass_parser.style_dictionary["g"]="GILGASHTAR"
+    ass_parser.style_dictionary["gil"]="GILGASHTAR"
     ass_parser.style_dictionary["ishtar"]="GILGASHTAR"
     ass_parser.style_dictionary["i"]="GILGASHTAR"
     ass_parser.style_dictionary["ereshti-aya"]="ERESHTI-AYA"
@@ -160,11 +162,11 @@ def kupletter_to_ass(username,password,outfilename):
 
 if __name__ == "__main__":
     if len(sys.argv)<4:
-        print "Need 3 arguments."
-        print "Usage:"
-        print "get_and_parse_kuplett.py USERNAME PASSWORD OUTFILE_NAME"
+        print("Need 3 arguments.")
+        print("Usage:")
+        print("get_and_parse_kuplett.py USERNAME PASSWORD OUTFILE_NAME")
         sys.exit(3)
     if os.path.exists(sys.argv[3]):
-        print "File '"+sys.argv[3]+"' already exists. Delete or rename it and try again."
+        print("File '"+sys.argv[3]+"' already exists. Delete or rename it and try again.")
         sys.exit(1)
     kupletter_to_ass(sys.argv[1],sys.argv[2],sys.argv[3])

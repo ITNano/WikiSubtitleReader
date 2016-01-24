@@ -29,7 +29,7 @@ class Raw_to_inputsong_parser():
             #if the singer is explicitly specified and the last one
             return split_line[1].strip()
         #here we actually have to explicitly specify the singer
-        return self.style_dictionary[split_line[0].lower()]+":"+split_line[1].strip()
+        return self.style_dictionary.get(split_line[0].lower(), r"OKÄND")+":"+split_line[1].strip()
 
     def __init__(self):
         self.style_dictionary={}

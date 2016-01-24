@@ -35,6 +35,6 @@ class Spex_spider:
         if browser.lower()=="firefox":
             self.driver = webdriver.Firefox()
         else:
-            print "Error: implemented drivers are: firefox." 
-            print "Need something else? Try to implement a case that does self.driver=webdriver.MyBrowser() in __init__ in spex_spider.py"
+            print("Error: implemented drivers are: firefox.")
+            print("Need something else? Try to implement a case that does self.driver=webdriver.MyBrowser() in __init__ in spex_spider.py")
         self.login_f_spexet_wiki()
