@@ -15,6 +15,8 @@ class Raw_to_inputsong_parser():
         split_line=line.split(delimiter,1)
         #generally, we do not want to write out the singer on every line
         #only when the singer changes, or if the last was empty
+        if len(line) == 0:
+            return ""
         if len(split_line)==1:
             #if no singer is specified
             #we will assume that it's the last one

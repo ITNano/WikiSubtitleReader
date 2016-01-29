@@ -38,6 +38,9 @@ class Raw_to_ass_parser():
         #Styledict maps a short form to a style used in the ASS file. Example:
         #Styledict["a"]="ANNA"
         #Note that keys are all cast to lowercase.
+        if len(line) == 0:
+            line = "kommentar:"                 # keep empty lines but do not show
+            
         split_line=line.split(delimiter,1)
         if len(split_line)==1:
             split_line=[self.empty_style,split_line[0]]

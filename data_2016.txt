@@ -1,0 +1,82 @@
+###################################### READ THIS FIRST ######################################
+# This is a data file for generating stuff from the spex wiki (http://f-spexet.se/wiki)		#
+# with a corresponing python script.														#
+# 																							#
+# The data is structured into sections. All sections start with an identifier. Currently	#
+# there are support for Web, Meta, Dictionary and Styles. All data under these sections		#
+# should be indented with one tab, or they will be ignored. Lines starting with a hashtag	#
+# is considered a comment and ignored as well.	All strings are written between quote		#
+# signs.																					#
+# 																							#
+# The Web section																			#
+# 	This section expects two properties: basePage and pages. The base page is the root of	#
+#	all the pages while the pages property contains a list of page names. The list starts	#
+#	with a curly bracket and ends with a curly bracket as well.								#
+#	Note that the base page should be declared before the list of all separate pages.		#
+#																							#
+# The Meta section																			#
+#	This is the section were all meta data is handled. Valid attributes are:				#
+#		title	Expects the name of the spex (year, title) as a string. Required.			#
+#		font	The default font to use for all styles as a string. Default is Arial.		#
+#																							#
+# The Dictionary section																	#
+#	This section treats all lines as a new property. Each line should be formatted as:		#
+#	NAME=list_of_synonyms																	#
+#	The line is used to allow the lyrics to describe a singer with different names in the	#
+#	raw text, whilst the ass file (with help of the dictionary) can figure out that it is	#
+#	the same person and therefore apply the same markup.									#
+#																							#
+# The Styles section																		#
+#	This section treats all lines as a new property. Each line should be formatted as:		#
+#	NAME=list_of_attributes																	#
+#	Each attribute is given as a pair of  name=value  where the value is not required to	#
+#	be contained in quote signs. Currently valid attribute names are:						#
+#		color	Expects a color on the format &HRRGGBBOO (red, green, blue, opacity)		#
+#		nere	Expects a boolean (true/false). If a style with the name [NAME] NERE and 	#
+#				a lower alignment should be generated for the given name.					#
+#		size	Expects an integer. Describes font size.									#
+#		font	Expects a valid font. Overrides the Meta section font attribute. If no		#
+#				font is given in the Meta section, Arial is default.						#
+#																							#
+# Questions																					#
+#	For any questions, contact me (Nano) at:												#
+#		matzlarsson94@gmail.com																#
+#############################################################################################
+
+Meta
+	title="F-spexet 2016"
+	font="Arial"
+
+Web
+	basePage="http://f-spexet.se/f-spexet/wiki/index.php/"
+	# Akt1
+	pages={"Presentationskuplett_(2016)", "Hemlig:Att_styra_en_stad", "Hemlig:Evig_prakt-final"}
+	# Akt2
+	pages={"Hemlig:Spanar_in_varandra", "Hemlig:Ond_K%C3%A4rlek", "Hemlig:F%C3%B6rtalfinal"}
+	# Akt3
+	pages={"Hemlig:M%C3%A4ssa_A_Cappella", "Hemlig:Tyranni-kuplett", "Hemlig:Förhandlingskuplett_(2016)", "Hemlig:Final-final_(2016)"}
+	
+Dictionary
+	KOMMENTAR={"kommentar", "lol", ""};
+	ALLA={"alla"};
+	GILGASHTAR={"gilgamesh", "g", "ishtar", "i"};
+	ERESHTI-AYA={"ereshti-aya", "ereshti aya", "ereshtiaya", "aya", "a"}
+	NAMMU={"nammu", "n"}
+	TAPPUTI={"tapputi", "t"}
+	ENHEDUANNA={"enheduanna", "enheduana", "e"}
+	HAMMURABI={"hammurabi", "h"}
+	GERTRUDE={"gertrude", "gertrude bell", "gertrudebell", "bell", "b"}
+
+	
+Styles
+	KOMMENTAR={color=&H00000000,nere=false}
+	ALLA={color=&H00FFFFFF}
+	ALLA STORT={color=&H00FFFFFF,nere=false,size=50}
+	GILGASHTAR={color=&H000000FF}
+	ENHEDUANNA={color=&H00FF3399}
+	HAMMURABI={color=&H003399FF}
+	ERESHTI-AYA={color=&H0033CC33}
+	GERTRUDE={color=&H00FF6600}
+	TAPPUTI={color=&H00FFFF00}
+	NAMMU={color=&H00335C85}
+	OKÄND={color=&H0000FFFF}
