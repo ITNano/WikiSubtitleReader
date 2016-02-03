@@ -33,7 +33,7 @@ def kupletter_to_inputsong(username,password,outdirname):
             akt += 1
     
     i=0
-    for lyric in lyrics:    
+    for lyric in lyrics:
         #open relevant file
         outfilename=outdirname+"/"+outfilenames[i]
         folder = outfilename;
@@ -56,10 +56,10 @@ def kupletter_to_inputsong(username,password,outdirname):
         arr_line=meta.arr
         medv_line=meta.medv
         outfile.write(title_line+"\n")
-        outfile.write(mel_line+"\n")
-        outfile.write(auth_line+"\n")
-        outfile.write(medv_line+"\n")
-        outfile.write(arr_line+"\n")
+        outfile.write("Melodi:   \t"+mel_line+"\n")
+        outfile.write("Text:     \t"+auth_line+"\n")
+        outfile.write("Arr:      \t"+arr_line+"\n")
+        outfile.write("Sjungs av:\t"+medv_line+"\n")
         outfile.write("\n")
     
         #if the first line does not have a singer
