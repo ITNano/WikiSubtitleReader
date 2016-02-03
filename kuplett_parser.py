@@ -113,7 +113,7 @@ def get_generic_name(filename):
     for part in parts[1:]:
         result += part.capitalize()
     
-    return unescape(result)
+    return unescape(result).replace(":", "_")
     
 def get_ass_header(sourcefile):
     # get data

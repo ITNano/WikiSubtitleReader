@@ -45,7 +45,10 @@ class Raw_to_ass_parser():
         if len(split_line)==1:
             split_line=[self.empty_style,split_line[0]]
         outline='Dialogue: 0,'+self.time_start+','+self.time_end+','
-        outline=outline+self.style_dictionary.get(split_line[0].lower(), r"OKÄND")+',,0,0,0,,'+split_line[1].strip()
+        default_singer = r"OKÄND"
+        if "," in split_line[0]:
+            default_singer = r"ALLA"
+        outline=outline+self.style_dictionary.get(split_line[0].lower(), default_singer)+',,0,0,0,,'+split_line[1].strip()
         self.empty_style=split_line[0]
         return outline
 
