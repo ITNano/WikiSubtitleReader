@@ -50,11 +50,21 @@ Meta
 Web
 	basePage="http://f-spexet.se/f-spexet/wiki/index.php/"
 	# Akt1
-	pages={"Presentationskuplett_(2016)", "Hemlig:Att_styra_en_stad", "Hemlig:Evig_prakt-final"}
+	pages={"Hemlig:Kuplett_2016:1:1._Presentationskuplett", "Hemlig:Kuplett_2016:1:3._Presentationskuplett"}
+	pages={"Hemlig:Kuplett_2016:2:1._Att_styra_en_stad", "Hemlig:Kuplett_2016:2:2._Kungens_skrytvisa"}
+	pages={"Hemlig:Kuplett_2016:3:1._Evig_prakt-final"}
 	# Akt2
-	pages={"Hemlig:Spanar_in_varandra", "Hemlig:Ond_K%C3%A4rlek", "Hemlig:F%C3%B6rtalfinal"}
+	pages={"Hemlig:Kuplett_2016:4:1._Spanar_in_varandra", "Hemlig:Kuplett_2016:4:3._Vi_fann_varann"}
+	pages={"Hemlig:Kuplett_2016:5:1._Ond_Kärlek", "Hemlig:Kuplett_2016:5:2._Valkampanj", "Hemlig:Kuplett_2016:5:3._Slug_plan"}
+	#Hemlig:Ond_K%C3%A4rlek
+	pages={"Hemlig:Kuplett_2016:6:1._Mässa_A_Cappella", "Hemlig:Kuplett_2016:6:2._Bål_A_Cappella"}
+	#Hemlig:M%C3%A4ssa_A_Cappella
+	pages={"Hemlig:Kuplett_2016:7:1._Förtalfinal"}
+	#Hemlig:F%C3%B6rtalfinal
 	# Akt3
-	pages={"Hemlig:M%C3%A4ssa_A_Cappella", "Hemlig:Tyranni-kuplett", "Hemlig:Förhandlingskuplett_(2016)", "Hemlig:Final-final_(2016)"}
+	pages={"Hemlig:Kuplett_2016:8:1._Tyranni-kuplett", "Hemlig:Kuplett_2016:8:3._Aya_och_Hammurabi", "Hemlig:Kuplett_2016:8:X._Bättre_förr"}
+	pages={"Hemlig:Kuplett_2016:9:1._Förhandlingskuplett", "Hemlig:Kuplett_2016:9:2._Ishtar_härjar", "Hemlig:Kuplett_2016:9:3._Ishtars_do(o)m"}
+	pages={"Hemlig:Kuplett_2016:10:1._Fyllnadsvalfinal"}
 	
 Dictionary
 	KOMMENTAR={"kommentar", "lol", ""};
