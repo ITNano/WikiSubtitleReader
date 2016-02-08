@@ -38,11 +38,9 @@ def load_data(sourcefile):
                     else:
                         print("Found invalid property in Web section: %s", property)
                 elif mode == "meta":
+                    # Parse all meta properties as strings.
                     property = line.split("=")[0].strip().lower()
-                    if property == "title":
-                        meta['title'] = line.split("=")[1].strip()[1:-1]
-                    if property == "font":
-                        meta['font'] = line.split("=")[1].strip()[1:-1]
+                    meta[property] = line.split("=")[1].strip()[1:-1]
                 elif mode == "dictionary":
                     # Do stuff
                     if len(line.split("=")) == 2:

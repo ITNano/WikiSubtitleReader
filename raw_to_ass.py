@@ -42,14 +42,34 @@ class Raw_to_ass_parser():
             line = "kommentar:"                 # keep empty lines but do not show
             
         split_line=line.split(delimiter,1)
+        # Handle lines without explicitly written singer
         if len(split_line)==1:
             split_line=[self.empty_style,split_line[0]]
-        outline='Dialogue: 0,'+self.time_start+','+self.time_end+','
+        
+        # Handle multi/none singer(s)
         default_singer = r"OKÄND"
         if "," in split_line[0]:
             default_singer = r"ALLA"
-        outline=outline+self.style_dictionary.get(split_line[0].lower(), default_singer)+',,0,0,0,,'+split_line[1].strip()
+        
+        # Handle people singing at the same time
+        extra_stylepart = ""
+        if self.multi_line:
+            extra_stylepart = " NERE"
+        if split_line[1].strip().endswith(self.multi_line_keyword):
+            split_line[1] = split_line[1].strip()[:-len(self.multi_line_keyword)]
+            self.multi_line = True;
+        else:
+            self.multi_line = False;
+        
+        # Construct the actual data.
+        outline='Dialogue: 0,'+self.time_start+','+self.time_end+','
+        outline=outline+self.style_dictionary.get(split_line[0].lower(), default_singer)+extra_stylepart+',,0,0,0,,'+split_line[1].strip()
+        
+        # Prepare for next line
         self.empty_style=split_line[0]
+        if len(outline) > 0 and not self.multi_line:
+            self.increment_time()
+            
         return outline
 
 
@@ -65,6 +85,8 @@ class Raw_to_ass_parser():
         self.time_end=seconds_to_time(time_to_seconds(self.time_start)+self.time_step)
         self.style_dictionary={}
         self.empty_style=""
+        self.multi_line = False;
+        self.multi_line_keyword = "[samtidigt]"
 
 
 

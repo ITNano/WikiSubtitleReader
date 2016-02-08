@@ -28,7 +28,10 @@ def kupletter_to_ass(username,password,outfilename):
     ass_parser=Raw_to_ass_parser(30,1) #increment 1 second for each new line. Start at 30 seconds.
     
     # Load dictionary for mapping singers
-    ass_parser.style_dictionary=kuplett_parser.load_data(sourcefile).get("dictionary")
+    data = kuplett_parser.load_data(sourcefile);
+    ass_parser.style_dictionary=data.get("dictionary")
+    if "multilinesplitter" in data.get("meta").keys():
+        ass_parser.multi_line_keyword = data.get("meta").get("multilinesplitter")
 
     delimiter=':' #separates singer from lyrics
 
@@ -36,20 +39,20 @@ def kupletter_to_ass(username,password,outfilename):
         #run through the file one time to parse metadata
         meta=get_metadata(lyric,delimiter)
         padding="kommentar:"
-        outfile.write(ass_parser.parse_line_to_ass(padding,delimiter)+"\n");ass_parser.increment_time()
+        outfile.write(ass_parser.parse_line_to_ass(padding,delimiter)+"\n");
 
         title_line="kommentar: Titel:"+meta.titel
         mel_line="kommentar: Melodi:"+meta.melodi
         auth_line=u"kommentar: Författare:"+meta.forf
         arr_line="kommentar: Arr:"+meta.arr
         medv_line="kommentar: Medverkande:"+meta.medv
-        outfile.write(ass_parser.parse_line_to_ass(title_line,delimiter)+"\n");ass_parser.increment_time()
-        outfile.write(ass_parser.parse_line_to_ass(mel_line,delimiter)+"\n");ass_parser.increment_time()
-        outfile.write(ass_parser.parse_line_to_ass(auth_line,delimiter)+"\n");ass_parser.increment_time()
-        outfile.write(ass_parser.parse_line_to_ass(arr_line,delimiter)+"\n");ass_parser.increment_time()
-        outfile.write(ass_parser.parse_line_to_ass(medv_line,delimiter)+"\n");ass_parser.increment_time()
+        outfile.write(ass_parser.parse_line_to_ass(title_line,delimiter)+"\n");
+        outfile.write(ass_parser.parse_line_to_ass(mel_line,delimiter)+"\n");
+        outfile.write(ass_parser.parse_line_to_ass(auth_line,delimiter)+"\n");
+        outfile.write(ass_parser.parse_line_to_ass(arr_line,delimiter)+"\n");
+        outfile.write(ass_parser.parse_line_to_ass(medv_line,delimiter)+"\n");
 
-        outfile.write(ass_parser.parse_line_to_ass(padding,delimiter)+"\n");ass_parser.increment_time()
+        outfile.write(ass_parser.parse_line_to_ass(padding,delimiter)+"\n");
         
         #if the first line does not have a singer
         #we will interpret it and following lines as if everyone is singing
@@ -61,7 +64,6 @@ def kupletter_to_ass(username,password,outfilename):
         for line in preprocess_ass(lyric,delimiter):
             ass_line=ass_parser.parse_line_to_ass(line,delimiter)
             if len(ass_line) > 0:
-                ass_parser.increment_time()
                 outfile.write(ass_line+"\n")
 
     outfile.close()

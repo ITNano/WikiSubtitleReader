@@ -46,6 +46,7 @@
 Meta
 	title="F-spexet 2016"
 	font="Arial"
+	multilinesplitter="[samtidigt]"
 
 Web
 	basePage="http://f-spexet.se/f-spexet/wiki/index.php/"
