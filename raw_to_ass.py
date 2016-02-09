@@ -32,14 +32,17 @@ def seconds_to_time(seconds):
 class Raw_to_ass_parser():
 
 
-    def parse_line_to_ass(self,line,delimiter):
+    def parse_line_to_ass(self,line,delimiter,allowEmptyLines):
         #example output:
         #Dialogue: 0,0:00:26.00,0:00:27.00,CHARACTER,,0,0,0,,I am singing!
         #Styledict maps a short form to a style used in the ASS file. Example:
         #Styledict["a"]="ANNA"
         #Note that keys are all cast to lowercase.
         if len(line) == 0:
-            line = "kommentar:"                 # keep empty lines but do not show
+            if allowEmptyLines:
+                line = "kommentar:"
+            else:
+                return ""
             
         split_line=line.split(delimiter,1)
         # Handle lines without explicitly written singer

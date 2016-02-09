@@ -163,6 +163,3 @@ def unescape(text):
     text = text.replace("%c3%84", "Ä")
     text = text.replace("%c3%85", "Å")
     return text
-    
-if __name__ == "__main__":
-    print(unescape("m%c3%a4ssaACappella"))

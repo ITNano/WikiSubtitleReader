@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-def preprocess_ass(lyric,delimiter):
+def preprocess_general(lyric, delimiter):
     new_lyric=[]
     empty_style=''
     for line in lyric:
@@ -17,6 +17,9 @@ def preprocess_ass(lyric,delimiter):
         empty_style=split_line[0]
     return new_lyric
 
+def preprocess_ass(lyric,delimiter):
+    return preprocess_general(lyric, delimiter)
+
 def preprocess_inputsong(lyric,delimiter):
-    # does exactly the same as the ass preprocessor actually.
-    return preprocess_ass(lyric, delimiter)
+    # does exactly the same as the general preprocessor actually.
+    return preprocess_general(lyric, delimiter)

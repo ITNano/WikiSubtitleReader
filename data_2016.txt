@@ -57,9 +57,7 @@ Web
 	# Akt2
 	pages={"Hemlig:Kuplett_2016:4:1._Spanar_in_varandra", "Hemlig:Kuplett_2016:4:3._Vi_fann_varann"}
 	pages={"Hemlig:Kuplett_2016:5:1._Ond_Kärlek", "Hemlig:Kuplett_2016:5:2._Valkampanj", "Hemlig:Kuplett_2016:5:3._Slug_plan"}
-	#Hemlig:Ond_K%C3%A4rlek
 	pages={"Hemlig:Kuplett_2016:6:1._Mässa_A_Cappella", "Hemlig:Kuplett_2016:6:2._Bål_A_Cappella"}
-	#Hemlig:M%C3%A4ssa_A_Cappella
 	pages={"Hemlig:Kuplett_2016:7:1._Förtalfinal"}
 	#Hemlig:F%C3%B6rtalfinal
 	# Akt3
