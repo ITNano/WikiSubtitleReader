@@ -19,6 +19,8 @@ def kupletter_to_inputsong(username,password,outdirname):
     #Various short forms of the different styles defined above. 
     #Note that keys are cast to lowercase, and hence no upper case version is needed
     inputsong_parser.style_dictionary = kuplett_parser.load_data(sourcefile).get("dictionary")
+    inputsong_parser.short_style_dictionary = {"ISHTAR":"Ish","GILGAMESH":"Gil","ERESHTI-AYA":"Aya","NAMMU":"Nam","TAPPUTI":"Tap","ENHEDUANNA":"En","HAMMURABI":"Ham","GERTRUDE":"Ger", "ALLA":"Alla","OKÄND":"Okänd"
+}
 
     delimiter=':' #separates singer from lyrics
 
@@ -56,10 +58,10 @@ def kupletter_to_inputsong(username,password,outdirname):
         arr_line=meta.arr
         medv_line=meta.medv
         outfile.write(title_line+"\n")
-        outfile.write("Melodi:   \t"+mel_line+"\n")
-        outfile.write("Text:     \t"+auth_line+"\n")
-        outfile.write("Arr:      \t"+arr_line+"\n")
-        outfile.write("Sjungs av:\t"+medv_line+"\n")
+        outfile.write(mel_line+"\n")
+        outfile.write(auth_line+"\n")
+        outfile.write(medv_line+"\n")
+        outfile.write(arr_line+"\n")
         outfile.write("\n")
     
         #if the first line does not have a singer

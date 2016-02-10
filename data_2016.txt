@@ -69,21 +69,23 @@ Web
 	
 Dictionary
 	KOMMENTAR={"kommentar", "lol", ""};
-	ALLA={"alla"};
-	GILGASHTAR={"gilgamesh", "g", "ishtar", "i"};
+	ALLA={"alla","båda","övriga","ö","alla utom g"};
+	ISHTAR={"ishtar", "i"};
+	GILGAMESH={"gilgamesh", "gi","gil"};
 	ERESHTI-AYA={"ereshti-aya", "ereshti aya", "ereshtiaya", "aya", "a"}
 	NAMMU={"nammu", "n"}
 	TAPPUTI={"tapputi", "t"}
 	ENHEDUANNA={"enheduanna", "enheduana", "e"}
 	HAMMURABI={"hammurabi", "h"}
-	GERTRUDE={"gertrude", "gertrude bell", "gertrudebell", "bell", "b"}
+	GERTRUDE={"gertrude", "ge","ger", "g","gertrude bell", "gertrudebell", "bell", "b"}
 
 	
 Styles
 	KOMMENTAR={color=&H00000000,nere=false}
 	ALLA={color=&H00FFFFFF}
 	ALLA STORT={color=&H00FFFFFF,nere=false,size=50}
-	GILGASHTAR={color=&H000000FF}
+	GILGAMESH={color=&H000000FF}
+	ISHTAR={color=&H000000FF}
 	ENHEDUANNA={color=&H00FF3399}
 	HAMMURABI={color=&H003399FF}
 	ERESHTI-AYA={color=&H0033CC33}
