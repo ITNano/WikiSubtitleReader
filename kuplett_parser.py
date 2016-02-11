@@ -126,10 +126,11 @@ def get_ass_header(sourcefile):
         \nCollisions: Normal\
         \nPlayResY: 0\n" % data.get("meta").get("title", "UndefinedTitle")
         
-    styles=r"[V4+ Styles]\n"\
-           +r"Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n"
+    styles="[V4+ Styles]\n"\
+           +"Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n"
     defaultFont = data.get("meta").get("font", "Arial")
     for style in data.get("styles"):
+        print(style.get("name", "cant find name"))
         name = style.get("name", "unknown_style")
         font = style.get("font", defaultFont)
         fontsize = style.get("fontsize", "32")
