@@ -18,9 +18,10 @@ def kupletter_to_inputsong(username,password,outdirname):
 
     #Various short forms of the different styles defined above. 
     #Note that keys are cast to lowercase, and hence no upper case version is needed
-    inputsong_parser.style_dictionary = kuplett_parser.load_data(sourcefile).get("dictionary")
-    inputsong_parser.short_style_dictionary = {"ISHTAR":"Ish","GILGAMESH":"Gil","ERESHTI-AYA":"Aya","NAMMU":"Nam","TAPPUTI":"Tap","ENHEDUANNA":"En","HAMMURABI":"Ham","GERTRUDE":"Ger", "ALLA":"Alla","OKÄND":"Okänd"
-}
+    data = kuplett_parser.load_data(sourcefile);
+    inputsong_parser.style_dictionary = data.get("dictionary")
+    inputsong_parser.short_style_dictionary = data.get("shortdictionary");
+    print(inputsong_parser.short_style_dictionary);
 
     delimiter=':' #separates singer from lyrics
 

@@ -66,10 +66,10 @@ Web
 	pages={"Hemlig:Kuplett_2016:10:1._Fyllnadsvalfinal"}
 	
 Dictionary
-	KOMMENTAR={"kommentar", "lol", ""};
-	ALLA={"alla","båda","övriga","ö","alla utom g"};
-	ISHTAR={"ishtar", "i"};
-	GILGAMESH={"gilgamesh", "gi","gil"};
+	KOMMENTAR={"kommentar", "lol", ""}
+	ALLA={"alla","båda","övriga","ö","alla utom g"}
+	ISHTAR={"ishtar", "i"}
+	GILGAMESH={"gilgamesh", "gi","gil"}
 	ERESHTI-AYA={"ereshti-aya", "ereshti aya", "ereshtiaya", "aya", "a"}
 	NAMMU={"nammu", "n"}
 	TAPPUTI={"tapputi", "t"}
@@ -77,6 +77,18 @@ Dictionary
 	HAMMURABI={"hammurabi", "h"}
 	GERTRUDE={"gertrude", "ge","ger", "g","gertrude bell", "gertrudebell", "bell", "b"}
 
+ShortDictionary
+	ISHTAR="Ish"
+	GILGAMESH="Gil"
+	ERESHTI-AYA="Aya"
+	NAMMU="Nam"
+	TAPPUTI="Tap"
+	ENHEDUANNA="En"
+	HAMMURABI="Ham"
+	GERTRUDE="Ger"
+	ALLA="Alla"
+	OKÄND="Okänd"
+}
 	
 Styles
 	KOMMENTAR={color=&H00000000,nere=false}

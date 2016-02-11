@@ -45,14 +45,16 @@ class Raw_to_inputsong_parser():
                 result += self.style_dictionary.get("alla", r"OKÄND")+',' #trailing , stripped later
             else:
                 for singer in singers:
-                    result += self.short_style_dictionary[self.style_dictionary.get(singer.lower().strip(), r"OKÄND")]+","
+                    longname = self.style_dictionary.get(singer.lower().strip(), r"OKÄND")
+                    result += self.short_style_dictionary.get(longname.lower(), longname)+","
             return result[:-1]+":"+split_line[1].strip()
         else:
             #single singer. Do not print out comment lines
             if self.style_dictionary.get(split_line[0].lower(), r"OKÄND")=="KOMMENTAR":
                 return ""
             else:
-                return self.short_style_dictionary[self.style_dictionary.get(split_line[0].lower(), r"OKÄND")]+":"+split_line[1].strip()
+                singer = self.style_dictionary.get(split_line[0].lower(), r"OKÄND")
+                return self.short_style_dictionary.get(singer.lower(), singer)+":"+split_line[1].strip()
 
     def __init__(self):
         self.style_dictionary={}

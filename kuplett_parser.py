@@ -16,6 +16,7 @@ def load_data(sourcefile):
     # Data containers
     urls = []
     dictionary = {}
+    shortdictionary = {}
     styles = []
     
     file = codecs.open(sourcefile, 'r', 'utf-8')
@@ -48,6 +49,10 @@ def load_data(sourcefile):
                             dictionary[dictionary_item.strip()] = line.split("=")[0].strip()
                     else:
                         print("Invalid format of a directory entry. Should be in format name={\"entry1\", \"entry2\"}")
+                elif mode == "shortdictionary":
+                    # Parse all meta properties as strings.
+                    property = line.split("=")[0].strip().lower()
+                    shortdictionary[property] = line.split("=")[1].strip()[1:-1]
                 elif mode == "styles":
                     index = line.index("=")
                     stylename = line[:index].strip()
@@ -68,7 +73,7 @@ def load_data(sourcefile):
                 else:
                     print("No functionality bound to section '%s'", mode)
     
-    return {"urls": urls, 'meta': meta, "dictionary": dictionary, "styles": styles}
+    return {"urls": urls, 'meta': meta, "dictionary": dictionary, "shortdictionary": shortdictionary, "styles": styles}
     
 def get_all_lyrics(sourcefile, username, password):
     #fetch urls of all songs
