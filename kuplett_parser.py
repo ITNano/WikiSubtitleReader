@@ -4,14 +4,6 @@ import codecs #to write utf-8 output
 import re
 from spex_spider import Spex_spider
 
-class StyleData():
-    def __init__(self, stylename):
-        self.stylename = stylename
-        self.fontsize = "32"
-        self.color = "&H00FFFFFF"
-        self.generate_down = 1
-        self.font = ""
-
 def load_data(sourcefile):
     # Data containers
     urls = []
@@ -26,49 +18,44 @@ def load_data(sourcefile):
     for line in file.readlines():
         if line.strip() != "" and not line.strip().startswith("#"):
             if not line.startswith("\t"):                           # No tab --> Section descriptor
-                mode = line.strip().lower();
+                mode = line.strip().lower()
             else:
                 line = line.strip()
+                data_split = line.split("=", 1)
                 if mode == "web":
-                    property = line.split("=")[0].strip().lower()
+                    property = data_split[0].strip().lower()
                     if property == "basepage":
-                        baseurl = line.split("=")[1].strip()[1:-1]
+                        baseurl = data_split[1].strip()
                     elif property == "pages":
-                        for url in get_string_list(line.split("=")[1]):
+                        for url in get_string_list(data_split[1]):
                             urls.append(baseurl+url.strip())
                     else:
                         print("Found invalid property in Web section: %s", property)
                 elif mode == "meta":
                     # Parse all meta properties as strings.
-                    property = line.split("=")[0].strip().lower()
-                    meta[property] = line.split("=")[1].strip()[1:-1]
+                    property = data_split[0].strip().lower()
+                    meta[property] = data_split[1].strip()
                 elif mode == "dictionary":
                     # Do stuff
-                    if len(line.split("=")) == 2:
-                        for dictionary_item in get_string_list(line.split("=")[1]):
-                            dictionary[dictionary_item.strip()] = line.split("=")[0].strip()
+                    if len(data_split) == 2:
+                        for dictionary_item in get_string_list(data_split[1]):
+                            dictionary[dictionary_item.strip()] = data_split[0].strip()
                     else:
                         print("Invalid format of a directory entry. Should be in format name={\"entry1\", \"entry2\"}")
                 elif mode == "shortdictionary":
                     # Parse all meta properties as strings.
-                    property = line.split("=")[0].strip().lower()
-                    shortdictionary[property] = line.split("=")[1].strip()[1:-1]
+                    property = data_split[0].strip().lower()
+                    shortdictionary[property] = data_split[1].strip()
                 elif mode == "styles":
-                    index = line.index("=")
-                    stylename = line[:index].strip()
-                    style = StyleData(stylename)
-                    for property in line[index+2:-1].split(","):
-                        propname = property.split("=")[0].strip().lower()
-                        if propname == "color":
-                            style.color = property.split("=")[1].strip()
-                        elif propname == "size":
-                            style.fontsize = property.split("=")[1].strip()
-                        elif propname == "font":
-                            style.font = property.split("=")[1].strip()
-                        elif propname == "nere":
-                            style.generate_down = not (property.split("=")[1].strip().lower() == "false")
+                    style = {"name":data_split[0]}
+                    for property in data_split[1][1:-1].split(","):
+                        prop_data = property.split("=")
+                        propname = prop_data[0].strip().lower()
+                        propvalue = prop_data[1].strip()
+                        if propname == "nere":
+                            style[propname] = not (propvalue.lower() == "false")
                         else:
-                            print("Invalid property found: %s" % propname)
+                            style[propname] = propvalue
                     styles.append(style)
                 else:
                     print("No functionality bound to section '%s'", mode)
@@ -141,15 +128,16 @@ def get_ass_header(sourcefile):
         
     styles=r"[V4+ Styles]\n"\
            +r"Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n"
-    defFont = data.get("meta").get("font", "Arial")
+    defaultFont = data.get("meta").get("font", "Arial")
     for style in data.get("styles"):
-        currentFont = defFont
-        if(len(style.font)>0):
-            currentFont = style.font
-            
-        styles += r"Style: %s,%s,%s,%s,%s,%s,%s,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1" % (style.stylename, currentFont, style.fontsize, style.color, style.color, style.color, style.color)+"\n"
-        if style.generate_down:
-            styles += r"Style: %s NERE,%s,%s,%s,%s,%s,%s,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1" % (style.stylename, currentFont, style.fontsize, style.color, style.color, style.color, style.color)+"\n"
+        name = style.get("name", "unknown_style")
+        font = style.get("font", defaultFont)
+        fontsize = style.get("fontsize", "32")
+        color = style.get("color", "&H00FFFFFF")
+        
+        styles += r"Style: %s,%s,%s,%s,%s,%s,%s,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1" % (name, font, fontsize, color, color, color, color)+"\n"
+        if style.get("nere", 1):
+            styles += r"Style: %s NERE,%s,%s,%s,%s,%s,%s,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1" % (name, font, fontsize, color, color, color, color)+"\n"
         
     event_preamble="[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
     

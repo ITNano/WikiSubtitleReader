@@ -5,8 +5,7 @@
 # The data is structured into sections. All sections start with an identifier. Currently	#
 # there are support for Web, Meta, Dictionary and Styles. All data under these sections		#
 # should be indented with one tab, or they will be ignored. Lines starting with a hashtag	#
-# is considered a comment and ignored as well.	All strings are written between quote		#
-# signs.																					#
+# is considered a comment and ignored as well.												#
 # 																							#
 # The Web section																			#
 # 	This section expects two properties: basePage and pages. The base page is the root of	#
@@ -44,12 +43,12 @@
 #############################################################################################
 
 Meta
-	title="F-spexet 2016"
-	font="Arial"
-	multilinesplitter="[samtidigt]"
+	title=F-spexet 2016
+	font=Arial
+	multilinesplitter=[samtidigt]
 
 Web
-	basePage="http://f-spexet.se/f-spexet/wiki/index.php/"
+	basePage=http://f-spexet.se/f-spexet/wiki/index.php/
 	# Akt1
 	pages={"Hemlig:Kuplett_2016:1:1._Presentationskuplett", "Hemlig:Kuplett_2016:1:3._Presentationskuplett"}
 	pages={"Hemlig:Kuplett_2016:2:1._Att_styra_en_stad", "Hemlig:Kuplett_2016:2:2._Kungens_skrytvisa"}
@@ -78,16 +77,16 @@ Dictionary
 	GERTRUDE={"gertrude", "ge","ger", "g","gertrude bell", "gertrudebell", "bell", "b"}
 
 ShortDictionary
-	ISHTAR="Ish"
-	GILGAMESH="Gil"
-	ERESHTI-AYA="Aya"
-	NAMMU="Nam"
-	TAPPUTI="Tap"
-	ENHEDUANNA="En"
-	HAMMURABI="Ham"
-	GERTRUDE="Ger"
-	ALLA="Alla"
-	OKÄND="Okänd"
+	ISHTAR=Ish
+	GILGAMESH=Gil
+	ERESHTI-AYA=Aya
+	NAMMU=Nam
+	TAPPUTI=Tap
+	ENHEDUANNA=En
+	HAMMURABI=Ham
+	GERTRUDE=Ger
+	ALLA=Alla
+	OKÄND=Okänd
 }
 	
 Styles
