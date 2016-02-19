@@ -50,12 +50,13 @@ def load_data(sourcefile):
                     style = {"name":data_split[0]}
                     for property in data_split[1][1:-1].split(","):
                         prop_data = property.split("=")
-                        propname = prop_data[0].strip().lower()
-                        propvalue = prop_data[1].strip()
-                        if propname == "nere":
-                            style[propname] = not (propvalue.lower() == "false")
-                        else:
-                            style[propname] = propvalue
+                        if len(prop_data) == 2:
+                            propname = prop_data[0].strip().lower()
+                            propvalue = prop_data[1].strip()
+                            if propname == "nere":
+                                style[propname] = not (propvalue.lower() == "false")
+                            else:
+                                style[propname] = propvalue
                     styles.append(style)
                 else:
                     print("No functionality bound to section '%s'", mode)
@@ -130,7 +131,6 @@ def get_ass_header(sourcefile):
            +"Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n"
     defaultFont = data.get("meta").get("font", "Arial")
     for style in data.get("styles"):
-        print(style.get("name", "cant find name"))
         name = style.get("name", "unknown_style")
         font = style.get("font", defaultFont)
         fontsize = style.get("fontsize", "32")
@@ -139,6 +139,7 @@ def get_ass_header(sourcefile):
         styles += r"Style: %s,%s,%s,%s,%s,%s,%s,0,0,0,0,100,100,0,0,1,2,2,5,50,50,45,1" % (name, font, fontsize, color, color, color, color)+"\n"
         if style.get("nere", 1):
             styles += r"Style: %s NERE,%s,%s,%s,%s,%s,%s,0,0,0,0,100,100,0,0,1,2,2,2,50,50,45,1" % (name, font, fontsize, color, color, color, color)+"\n"
+            styles += r"Style: %s UPPE,%s,%s,%s,%s,%s,%s,0,0,0,0,100,100,0,0,1,2,2,8,50,50,45,1" % (name, font, fontsize, color, color, color, color)+"\n"
         
     event_preamble="[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
     

@@ -38,12 +38,14 @@ class Raw_to_ass_parser():
         #Styledict maps a short form to a style used in the ASS file. Example:
         #Styledict["a"]="ANNA"
         #Note that keys are all cast to lowercase.
+        emptyLine = False
         if len(line) == 0:
+            emptyLine = True
             if allowEmptyLines:
                 line = "kommentar:"
             else:
                 return ""
-            
+                
         split_line=line.split(delimiter,1)
         # Handle lines without explicitly written singer
         if len(split_line)==1:
@@ -51,7 +53,7 @@ class Raw_to_ass_parser():
         
         # Handle multi/none singer(s)
         default_singer = r"OKÄND"
-        if "," in split_line[0]:
+        if "," in split_line[0] or "+" in split_line[0]:
             default_singer = r"ALLA"
         
         # Handle people singing at the same time
@@ -59,6 +61,10 @@ class Raw_to_ass_parser():
         if self.multi_line:
             extra_stylepart = " NERE"
         if split_line[1].strip().endswith(self.multi_line_keyword):
+            if self.multi_line:
+                print("WARNING: Found 3+ multiline!")
+                
+            extra_stylepart = " UPPE"
             split_line[1] = split_line[1].strip()[:-len(self.multi_line_keyword)]
             self.multi_line = True;
         else:
@@ -69,7 +75,9 @@ class Raw_to_ass_parser():
         outline=outline+self.style_dictionary.get(split_line[0].lower(), default_singer)+extra_stylepart+',,0,0,0,,'+split_line[1].strip()
         
         # Prepare for next line
-        self.empty_style=split_line[0]
+        if not emptyLine:
+            self.empty_style=split_line[0]
+            
         if len(outline) > 0 and not self.multi_line:
             self.increment_time()
             
