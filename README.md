@@ -6,11 +6,11 @@ Note: Authentication to the private material is required for this to be run.
 ## Running the script(s)
 To generate an ass file, call:
 
-*python get_and_ass_kuplett.py <USERNAME> <PASSWORD> <OUTPUT ASS FILE>*
+*python3 get_and_ass_kuplett.py <USERNAME> <PASSWORD> <OUTPUT ASS FILE>*
 
 To generate a folder structure, call:
 
-*python get_and_inputsong_kuplett.py <USERNAME> <PASSWORD> <OUTPUT DIR>*
+*python3 get_and_inputsong_kuplett.py <USERNAME> <PASSWORD> <OUTPUT DIR>*
 
 This will populate subdirs
 
@@ -21,6 +21,8 @@ Akt2
 Akt3
 
 with one file for each song.
+
+Note that Python 3.x is used. Python 2.x will have syntax errors.
 
 ## Diff functionality
 For each time the scripts syncs data, a raw file is stored to be able to calculate
@@ -33,6 +35,6 @@ line is changed on the wiki. This means that custom styling can be made to lines
 (and remain) unless the concrete content is changed on the wiki.
 
 ## Requirements
-Requires selenium for python (http://www.seleniumhq.org/):
+Requires Python3 and selenium (http://www.seleniumhq.org/):
 
 (sudo) pip install selenium
