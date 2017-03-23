@@ -1,0 +1,90 @@
+###################################### READ THIS FIRST ######################################
+# This is a data file for generating stuff from the spex wiki (http://f-spexet.se/wiki)		#
+# with a corresponing python script.														#
+# 																							#
+# The data is structured into sections. All sections start with an identifier. Currently	#
+# there are support for Web, Meta, Dictionary and Styles. All data under these sections		#
+# should be indented with one tab, or they will be ignored. Lines starting with a hashtag	#
+# is considered a comment and ignored as well.	All strings are written between quote		#
+# signs.																					#
+# 																							#
+# The Web section																			#
+# 	This section expects two properties: basePage and pages. The base page is the root of	#
+#	all the pages while the pages property contains a list of page names. The list starts	#
+#	with a curly bracket and ends with a curly bracket as well.								#
+#	Note that the base page should be declared before the list of all separate pages.		#
+#																							#
+# The Meta section																			#
+#	This is the section were all meta data is handled. Valid attributes are:				#
+#		title	Expects the name of the spex (year, title) as a string. Required.			#
+#		font	The default font to use for all styles as a string. Default is Arial.		#
+#																							#
+# The Dictionary section																	#
+#	This section treats all lines as a new property. Each line should be formatted as:		#
+#	NAME=list_of_synonyms																	#
+#	The line is used to allow the lyrics to describe a singer with different names in the	#
+#	raw text, whilst the ass file (with help of the dictionary) can figure out that it is	#
+#	the same person and therefore apply the same markup.									#
+#																							#
+# The Styles section																		#
+#	This section treats all lines as a new property. Each line should be formatted as:		#
+#	NAME=list_of_attributes																	#
+#	Each attribute is given as a pair of  name=value  where the value is not required to	#
+#	be contained in quote signs. Currently valid attribute names are:						#
+#		color	Expects a color on the format &HRRGGBBOO (red, green, blue, opacity)		#
+#		nere	Expects a boolean (true/false). If a style with the name [NAME] NERE and 	#
+#				a lower alignment should be generated for the given name.					#
+#		size	Expects an integer. Describes font size.									#
+#		font	Expects a valid font. Overrides the Meta section font attribute. If no		#
+#				font is given in the Meta section, Arial is default.						#
+#																							#
+# Questions																					#
+#	For any questions, contact me (Nano) at:												#
+#		matzlarsson94@gmail.com																#
+#############################################################################################
+
+Meta
+	title="F-spexet 2017"
+	font="Arial"
+	multilinesplitter="[samtidigt]"
+
+Web
+	basePage=http://f-spexet.se/wiki/index.php/
+	# Akt1
+	pages={"Kuplett_2017:1:1:1._Stå_på_dig_Julle", "Kuplett_2017:1:1:2._Megarbetsförmedlingen", "Kuplett_2017:1:1:3._Ode_to_Baguette"}
+	pages={"Kuplett_2017:1:2:1._Går_som_tåget", "Kuplett_2017:1:2:2._Vem_leder_bäst", "Kuplett_2017:1:2:3._We_are_Number_One_fast_den_är_en_omstart_i_F-Spexet"}
+	pages={"Kuplett_2017:1:3:1._Ubåtsfraktfinal"}
+	# Akt2
+	pages={"Kuplett_2017:2:1:1._Skönheten_och_odjuret","Kuplett_2017:2:1:2._Övning_åt_åhöraren","Kuplett_2017:2:1:3._Terapi_med_doktor_Freud"}
+	pages={"Kuplett_2017:2:2:1._Hem-lig_kärlek", "Kuplett_2017:2:2:2._Handduk", "Kuplett_2017:2:2:3._Jag_föll_för_dig"}
+	pages={"Kuplett_2017:2:3:1._Förtalkör","Kuplett_2017:2:3:2._Utforskarens_Klagan","Kuplett_2017:2:3:3._Detta_är_spex"}
+	pages={"Kuplett_2017:2:4:1._Ubåtsslaktfinal"}
+	# Akt3
+	pages={"Kuplett_2017:3:1:1._En_Tekniknörds_Dröm","Kuplett_2017:3:1:2._Cool_mojäng","Kuplett_2017:3:1:3._Handlingssammanfattning"}
+	pages={"Kuplett_2017:3:2:1._Lynchmobbskuplett","Kuplett_2017:3:2:2._Passivt_Aggresiva","Kuplett_2017:3:2:3._Sabotör"}
+	pages={"Kuplett_2017:3:3:1._Celestialfinal"}
+	
+Dictionary
+	KOMMENTAR={"kommentar", "lol", ""};
+	ALLA={"alla","båda","b","övriga","ö","övr.","St.1","St.2","J+T+A+Fa"};
+	JULES={"j"};
+	MEGANE={"m"};
+	TRAIN={"t"}
+	UINTE={"u"}
+	FARADAY={"fa"}
+	FREUD={"fr"}
+	ADA={"a"}
+
+	
+Styles
+	KOMMENTAR={color=&H00000000,nere=false}
+	ALLA={color=&H00FFFFFF}
+	ALLA STORT={color=&H00FFFFFF,nere=false,size=50}
+	JULES={color=&H000000FF}
+	MEGANE={color=&H000000FF}
+	TRAIN={color=&H00FF3399}
+	UINTE={color=&H003399FF}
+	FARADAY={color=&H0033CC33}
+	FREUD={color=&H00FF6600}
+	ADA={color=&H00FFFF00}
+	OKÄND={color=&H0000FFFF}
