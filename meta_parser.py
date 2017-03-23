@@ -35,7 +35,7 @@ def get_metadata(lyric,delimiter):
         if split_line[0].lower() in ["titel"]:
             meta.titel=meta.titel+split_line[1].strip()
             empty_style="titel"
-        elif split_line[0].lower() in ["melodi"]:
+        elif split_line[0].lower() in ["melodi", "mel"]:
             meta.melodi=meta.melodi+split_line[1].strip()
             empty_style="melodi"
         elif split_line[0].lower() in ["arr"]:
@@ -44,7 +44,7 @@ def get_metadata(lyric,delimiter):
         elif split_line[0].lower() in ["författare", "text"]:
             meta.forf=meta.forf+split_line[1].strip()
             empty_style=u"författare"
-        elif split_line[0].lower() in ["medv"]:
+        elif split_line[0].lower() in ["medv","medverkande"]:
             meta.medv=meta.medv+split_line[1].strip()
             empty_style=u"medv"
         else: 

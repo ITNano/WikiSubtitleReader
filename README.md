@@ -35,6 +35,11 @@ line is changed on the wiki. This means that custom styling can be made to lines
 (and remain) unless the concrete content is changed on the wiki.
 
 ## Requirements
-Requires Python3 and selenium (http://www.seleniumhq.org/):
+Requires Python3 and selenium 3.3 (http://www.seleniumhq.org/):
 
-(sudo) pip install selenium
+         (sudo) pip(3) install selenium
+
+Geckodriver for newer versions of firefox
+
+          https://github.com/mozilla/geckodriver/releases
+          extract the appropriate binary and put it in your PATH

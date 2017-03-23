@@ -11,7 +11,7 @@ from preprocess import preprocess_ass
 
 
 def kupletter_to_ass(username,password,outfilename):
-    sourcefile = "data_2016.txt"
+    sourcefile = "data_2017.txt"
     allowEmptyLines = True
 
     lyrics=kuplett_parser.get_all_lyrics(sourcefile, username, password);
