@@ -38,13 +38,13 @@ def get_metadata(lyric,delimiter):
         elif split_line[0].lower() in ["melodi", "mel"]:
             meta.melodi=meta.melodi+split_line[1].strip()
             empty_style="melodi"
-        elif split_line[0].lower() in ["arr"]:
+        elif split_line[0].lower() in ["arr","arrare","arrangemang"]:
             meta.arr=meta.arr+split_line[1].strip()
             empty_style="arr"
         elif split_line[0].lower() in ["författare", "text"]:
             meta.forf=meta.forf+split_line[1].strip()
             empty_style=u"författare"
-        elif split_line[0].lower() in ["medv","medverkande"]:
+        elif split_line[0].lower() in ["medv","medverkande","karaktärer","sjungs av"]:
             meta.medv=meta.medv+split_line[1].strip()
             empty_style=u"medv"
         else: 

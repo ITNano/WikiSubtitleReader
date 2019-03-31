@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Contains overall functionality.
 
 import codecs #to write utf-8 output

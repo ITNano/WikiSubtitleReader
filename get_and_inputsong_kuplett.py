@@ -11,7 +11,7 @@ from preprocess import preprocess_inputsong
 
 
 def kupletter_to_inputsong(username,password,outdirname):
-    sourcefile = "data_2017.txt"
+    sourcefile = "data_inputsong2019.txt"
     lyrics=kuplett_parser.get_all_lyrics(sourcefile, username, password);
     #parse read text and write to an inputsong file
     inputsong_parser=Raw_to_inputsong_parser() 

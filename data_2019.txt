@@ -1,0 +1,90 @@
+###################################### READ THIS FIRST ######################################
+# This is a data file for generating stuff from the spex wiki (http://f-spexet.se/wiki)		#
+# with a corresponing python script.														#
+# 																							#
+# The data is structured into sections. All sections start with an identifier. Currently	#
+# there are support for Web, Meta, Dictionary and Styles. All data under these sections		#
+# should be indented with one tab, or they will be ignored. Lines starting with a hashtag	#
+# is considered a comment and ignored as well.	All strings are written between quote		#
+# signs.																					#
+# 																							#
+# The Web section																			#
+# 	This section expects two properties: basePage and pages. The base page is the root of	#
+#	all the pages while the pages property contains a list of page names. The list starts	#
+#	with a curly bracket and ends with a curly bracket as well.								#
+#	Note that the base page should be declared before the list of all separate pages.		#
+#																							#
+# The Meta section																			#
+#	This is the section were all meta data is handled. Valid attributes are:				#
+#		title	Expects the name of the spex (year, title) as a string. Required.			#
+#		font	The default font to use for all styles as a string. Default is Arial.		#
+#																							#
+# The Dictionary section																	#
+#	This section treats all lines as a new property. Each line should be formatted as:		#
+#	NAME=list_of_synonyms																	#
+#	The line is used to allow the lyrics to describe a singer with different names in the	#
+#	raw text, whilst the ass file (with help of the dictionary) can figure out that it is	#
+#	the same person and therefore apply the same markup.									#
+#																							#
+# The Styles section																		#
+#	This section treats all lines as a new property. Each line should be formatted as:		#
+#	NAME=list_of_attributes																	#
+#	Each attribute is given as a pair of  name=value  where the value is not required to	#
+#	be contained in quote signs. Currently valid attribute names are:						#
+#		color	Expects a color on the format &HRRGGBBOO (red, green, blue, opacity)		#
+#		nere	Expects a boolean (true/false). If a style with the name [NAME] NERE and 	#
+#				a lower alignment should be generated for the given name.					#
+#		size	Expects an integer. Describes font size.									#
+#		font	Expects a valid font. Overrides the Meta section font attribute. If no		#
+#				font is given in the Meta section, Arial is default.						#
+#																							#
+# Questions																					#
+#	For any questions, contact me (Nano) at:												#
+#		matzlarsson94@gmail.com																#
+#############################################################################################
+
+Meta
+	title="F-spexet 2019"
+	font="Arial"
+	multilinesplitter="[samtidigt]"
+
+Web
+	basePage=http://wiki.f-spexet.se/index.php/
+	# Akt1
+	pages={"Kuplett_2019:1:1:1._Work,_Work!","Kuplett_2019:1:1:2._Bombbiss","Kuplett_2019:1:1:3._Här_kommer_alla_dödsriken"}
+	pages={"Kuplett_2019:1:2:1._Hel_och_Hades_dagdrömmer","Kuplett_2019:1:2:2._Visst_är_du_snygg_och_stark","Kuplett_2019:1:2:3._BetoningsTriss"}
+	pages={"Kuplett_2019:1:3:1._Arbetstaktfinal"}
+	# Akt2
+	pages={"Kuplett_2019:2:1:1._Sorteringskuplett","Kuplett_2019:2:1:2._Kärlek_eller_hat","Kuplett_2019:2:1:3._Hallelujah"}
+	pages={"Kuplett_2019:2:2:1._Moralpanik","Kuplett_2019:2:2:2._Integer_Overflow","Kuplett_2019:2:2:3._Du_är_ju_inte_klok"}
+	pages={"Kuplett_2019:2:3:1._Semesteacapella","Kuplett_2019:2:3:2._Metabolismen","Kuplett_2019:2:3:3._Avokado"}
+	pages={"Kuplett_2019:2:4:1._Dödsföraktfinal"}
+	# Akt3
+	pages={"Kuplett_2019:3:1:1._Hel_har_makt","Kuplett_2019:3:1:2._Undergångssång","Kuplett_2019:3:1:3._Deja_vu"}
+	pages={"Kuplett_2019:3:2:1._En_odöd_romans","Kuplett_2019:3:2:2._Trekantsbiss","Kuplett_2019:3:2:3._Modemisstriss"}
+	pages={"Kuplett_2019:3:3:1._Finalfinal"}
+	
+Dictionary
+	KOMMENTAR={"kommentar", "lol", ""};
+	ALLA={"hel och hades", "döden och azrael","oppenheimer och solovjov","döden och oppenheimer","alla","båda","b","övriga","ö","övr.","st.1","st.2"};
+	DODEN={"d","döden","dö","do"};
+	OPPENHEIMER={"o","oppenheimer","op"};
+	AZRAEL={"a","azrael","az"}
+	HEL={"he","hel"}
+	HADES={"ha","hades"}
+	SOLOVJOV={"s","solovjov","so"}
+	PERSEFONE={"p","persefone","pe"}
+
+	
+Styles
+	KOMMENTAR={color=&H00000000,nere=false}
+	ALLA={color=&H00FFFFFF}
+	ALLA STORT={color=&H00FFFFFF,nere=false,size=50}
+	DODEN={color=&H000000FF}
+	OPPENHEIMER={color=&H000000FF}
+	AZRAEL={color=&H00FF3399}
+	HEL={color=&H003399FF}
+	HADES={color=&H0033CC33}
+	SOLOVJOV={color=&H00FF6600}
+	PERSEFONE={color=&H00FFFF00}
+	OKÄND={color=&H0000FFFF}

@@ -11,7 +11,7 @@ def preprocess_general(lyric, delimiter):
         #search for meta data tags, and set the emptystyle to
         #that tag so that constructive lines without additional tags
         #will be intepreted as having the previous tag
-        if not split_line[0].lower() in ["titel", "melodi","mel", "arr", "författare", "text", "medv", "form","medverkande"]:
+        if not split_line[0].lower() in ["titel", "melodi","mel", "arr","arrare","arrangemang", "författare", "text", "medv", "form","medverkande","karaktärer","sjungs av"]:
             new_lyric.append(line)
             
         empty_style=split_line[0]
